@@ -1,7 +1,7 @@
 
 Name : Abdul
 Company : CDW
-Address : 
-Pin : 
-Contact :
-
+Address : xxxxxxxxx
+Pin : xxxxxxxxx
+Contact : xxxxxxx
+State : Karnataka
