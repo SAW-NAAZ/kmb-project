@@ -1,0 +1,28 @@
+--> Configuring SonarQube server
+
+--> create Ec2 instance T2-Medium
+
+ cd /opt/
+yum install wget unzip -y
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-7.6.zip
+sudo amazon-linux-extras install java-openjdk11
+sudo yum install java-1.8.0-openjdk
+java --version
+unzip sonarqube-7.6.zip
+useradd sonar
+visudo --> one editor --> sonar   ALL=(ALL)   NOPASSWD:ALL
+ chown -R sonar:sonar /opt/sonarqube-7.6
+ chmod -R 775 /opt/sonarqube-7.6
+ ls -l
+ su - sonar
+cd /opt/
+cd sonarqube-7.6/
+ls
+cd bin
+ls -l
+ cd linux-x86-64
+ ./sonar.sh start
+./sonar.sh status
+open url http:<ec2-public ip>:9000
+for Nexus server --> :8081
+for tomcat --> :8080

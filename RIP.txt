@@ -1,0 +1,83 @@
+Wed Nov 2 17:49:47 2022   Router0   Router>en
+Wed Nov 2 17:49:53 2022   Router0   Router#conf t
+Wed Nov 2 17:50:04 2022   Router0   Router(config)#h Bl-1
+Wed Nov 2 17:50:11 2022   Router0   Bl-1(config)#interface se0/1/0
+Wed Nov 2 17:50:39 2022   Router0   Bl-1(config-if)#ip address 10.0.0.1 255.255.255.0
+Wed Nov 2 17:50:42 2022   Router0   Bl-1(config-if)#no shutdown 
+Wed Nov 2 17:50:44 2022   Router0   Bl-1(config-if)#exit
+Wed Nov 2 17:50:51 2022   Router0   Bl-1(config)#interface g0/0/0
+Wed Nov 2 17:51:03 2022   Router0   Bl-1(config-if)#ip address 192.0.0.254 255.255.255.0
+Wed Nov 2 17:51:08 2022   Router0   Bl-1(config-if)#no shutdown 
+Wed Nov 2 17:51:10 2022   Router0   Bl-1(config-if)#exit
+Wed Nov 2 17:51:31 2022   Router1   Router>en
+Wed Nov 2 17:51:35 2022   Router1   Router#conf t
+Wed Nov 2 17:51:39 2022   Router1   Router(config)#h B;-2
+Wed Nov 2 17:51:45 2022   Router1   B;-2(config)#h Bl-2
+Wed Nov 2 17:51:52 2022   Router1   Bl-2(config)#interface se0/1/0 
+Wed Nov 2 17:52:05 2022   Router1   Bl-2(config-if)#ip address 10.0.0.2 255.255.255.0
+Wed Nov 2 17:52:11 2022   Router1   Bl-2(config-if)#no shutdown 
+Wed Nov 2 17:52:14 2022   Router1   Bl-2(config-if)#exit
+Wed Nov 2 17:52:21 2022   Router1   Bl-2(config)#interface 
+Wed Nov 2 17:52:28 2022   Router1   Bl-2(config)#interface g0/0/0
+Wed Nov 2 17:52:41 2022   Router1   Bl-2(config-if)#ip address 193.0.0.254 255.255.255.0
+Wed Nov 2 17:52:43 2022   Router1   Bl-2(config-if)#no shutdown 
+Wed Nov 2 17:52:44 2022   Router1   Bl-2(config-if)#exit
+Wed Nov 2 17:53:41 2022   Router0   Bl-1(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.2
+Wed Nov 2 17:53:43 2022   Router0   Bl-1(config)#do wr
+Wed Nov 2 17:53:45 2022   Router0   Bl-1(config)#exit
+Wed Nov 2 17:54:10 2022   Router1   Bl-2(config)#ip route 0.0.0.0 0.0.0.0 10.0.0.1
+Wed Nov 2 17:54:15 2022   Router1   Bl-2(config)#do wr
+Wed Nov 2 17:54:16 2022   Router1   Bl-2(config)#exit
+Wed Nov 2 17:57:18 2022   Router0   Bl-1#ping 193.0.0.1
+Wed Nov 2 17:59:15 2022   Router0   Bl-1#traceroute 193.0.0.1
+Wed Nov 2 18:00:59 2022   Router1   Bl-2#show ip route 
+Wed Nov 2 18:03:09 2022   Router1   Bl-2#show ip interface brief 
+Wed Nov 2 18:03:56 2022   Router1   Bl-2#show ip route ?
+Wed Nov 2 18:04:08 2022   Router1   Bl-2#show ip route summary 
+Wed Nov 2 18:04:41 2022   Router1   Bl-2#show ip route static 
+Wed Nov 2 18:05:03 2022   Router1   Bl-2#show ip route WORD
+Wed Nov 2 18:21:22 2022   Router0   Bl-1#show running-config 
+Wed Nov 2 18:21:30 2022   Router0   Bl-1#conf t
+Wed Nov 2 18:21:48 2022   Router0   Bl-1(config)#no ip route 0.0.0.0 0.0.0.0 10.0.0.2 
+Wed Nov 2 18:21:51 2022   Router0   Bl-1(config)#do wr
+Wed Nov 2 18:21:54 2022   Router0   Bl-1(config)#exit
+Wed Nov 2 18:21:56 2022   Router0   Bl-1#exit
+Wed Nov 2 18:22:07 2022   Router0   Bl-1>en
+Wed Nov 2 18:22:12 2022   Router0   Bl-1#show ip route 
+Wed Nov 2 18:22:45 2022   Router1   Bl-2#show running-config 
+Wed Nov 2 18:22:50 2022   Router1   Bl-2#conf t
+Wed Nov 2 18:23:06 2022   Router1   Bl-2(config)#no ip route 0.0.0.0 0.0.0.0 10.0.0.1
+Wed Nov 2 18:23:08 2022   Router1   Bl-2(config)#do wr
+Wed Nov 2 18:23:09 2022   Router1   Bl-2(config)#exit
+Wed Nov 2 18:23:11 2022   Router1   Bl-2#exit
+Wed Nov 2 18:23:13 2022   Router1   Bl-2>en
+Wed Nov 2 18:23:16 2022   Router1   Bl-2#show ip route 
+Wed Nov 2 18:24:11 2022   Router0   Bl-1#conf t
+Wed Nov 2 18:24:21 2022   Router0   Bl-1(config)#router ?
+Wed Nov 2 18:24:41 2022   Router0   Bl-1(config)#router rip 
+Wed Nov 2 18:24:44 2022   Router0   Bl-1(config-router)#version ?
+Wed Nov 2 18:25:06 2022   Router0   Bl-1(config-router)#version 2
+Wed Nov 2 18:25:40 2022   Router0   Bl-1(config-router)#network 10.0.0.0
+Wed Nov 2 18:25:46 2022   Router0   Bl-1(config-router)#network 192.0.0.0
+Wed Nov 2 18:25:55 2022   Router0   Bl-1(config-router)#no auto-summary 
+Wed Nov 2 18:26:16 2022   Router0   Bl-1(config-router)#do wr
+Wed Nov 2 18:26:17 2022   Router0   Bl-1(config-router)#exit
+Wed Nov 2 18:26:18 2022   Router0   Bl-1(config)#exit
+Wed Nov 2 18:26:22 2022   Router1   Bl-2#conf t
+Wed Nov 2 18:26:27 2022   Router1   Bl-2(config)#router rip 
+Wed Nov 2 18:26:29 2022   Router1   Bl-2(config-router)#version 2
+Wed Nov 2 18:26:33 2022   Router1   Bl-2(config-router)#network 10.0.0.0
+Wed Nov 2 18:26:37 2022   Router1   Bl-2(config-router)#network 193.0.0.0
+Wed Nov 2 18:26:40 2022   Router1   Bl-2(config-router)#no auto-summary 
+Wed Nov 2 18:26:42 2022   Router1   Bl-2(config-router)#do wr
+Wed Nov 2 18:26:43 2022   Router1   Bl-2(config-router)#ex
+Wed Nov 2 18:26:44 2022   Router1   Bl-2(config)#ex
+Wed Nov 2 18:26:46 2022   Router1   Bl-2#show ip route 
+Wed Nov 2 18:26:58 2022   Router0   Bl-1#show ip route 
+Wed Nov 2 18:27:21 2022   Router0   Bl-1#show ip route 
+Wed Nov 2 18:27:38 2022   Router1   Bl-2#show ip route 
+Wed Nov 2 18:28:08 2022   Router1   Bl-2#show ip route ?
+Wed Nov 2 18:28:12 2022   Router1   Bl-2#show ip route rip 
+Wed Nov 2 18:28:19 2022   Router1   Bl-2#show ip route rip ?
+Wed Nov 2 18:28:33 2022   Router1   Bl-2#show ip protocols 
+Wed Nov 2 18:29:41 2022   Router1   Bl-2#show ip protocols ?
